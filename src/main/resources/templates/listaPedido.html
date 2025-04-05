@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <!-- Link para o Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: 'Roboto Slab', serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #E3F2FD;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1A237E;
+            text-shadow: 1px 1px 3px #000;
+            padding: 20px;
+            border: 4px solid #1A237E;
+            display: inline-block;
+            background: linear-gradient(45deg, #1A237E, #3949AB);
+            border-radius: 15px;
+            color: #FAFAFA;
+        }
+
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #FAFAFA;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(45deg, #1A237E, #3949AB);
+            color: #FAFAFA;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: bold;
+            border-bottom: 2px solid #FAFAFA;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #E3F2FD;
+        }
+
+        tbody tr:hover {
+            background-color: #BBDEFB;
+            cursor: pointer;
+        }
+
+        /* Link de voltar */
+        a {
+            font-weight: bold;
+            text-decoration: none;
+            color: #1A237E;
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FFD700;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        a:hover {
+            background-color: #FFEB3B;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Pedidos</h1>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Data de Cadastro</th>
+        <th>Fornecedor</th>
+        <th>Valor Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pedido : ${pedido}">
+        <td th:text="${pedido.id}">ID</td>
+        <td th:text="${pedido.dataCadastro}">Data de Cadastro</td>
+        <td th:text="${pedido.fornecedor.nomeFantasia}">Fornecedor</td>
+        <td th:text="${pedido.valorTotal}">Valor Total</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<a href="/index">Voltar para a Página Inicial</a>
+
+</body>
+</html>

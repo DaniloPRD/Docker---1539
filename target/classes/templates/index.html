@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALBANEZ SYSTEM</title>
+  <!-- Link para o Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto Slab', serif;
+      background-image: url('https://scontent.fmgf14-1.fna.fbcdn.net/v/t39.30808-1/284164718_412151654251493_2076224581934545830_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=110&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=So85AQ38di8Q7kNvgGW2GXv&_nc_oc=AdhAh56nJB2bTt_rzZ20NS8RwTH9zFi65JWsCjf6_JdkCbB5_enKUtXiJzthwsx1dwQ&_nc_zt=24&_nc_ht=scontent.fmgf14-1.fna&_nc_gid=A5s3jGlME3nymOd--T2XWdH&oh=00_AYAMxy7_ZYIvqkTG-kaTTEvy_XYw1PPRtKsVCsw264qcFA&oe=67C00605'); /* Link da imagem de fundo da web */
+      background-size: 50%;  /* Faz com que a imagem cubra toda a tela */
+      background-position: center center;  /* Centraliza a imagem */
+      background-attachment: fixed;  /* Faz a imagem não se mover ao rolar a página */
+      color: #333;
+      line-height: 1.6;
+      height: 100vh;  /* Garante que a altura do corpo ocupe toda a tela */
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #FFFFFF;
+      text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(26, 35, 126, 0.8); /* Transparência no fundo */
+      padding: 15px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    .menu li {
+      position: relative;
+      margin-right: 20px;
+    }
+
+    .menu li:last-child {
+      margin-right: 0;
+    }
+
+    .menu a {
+      color: #FAFAFA;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu a:hover {
+      background-color: #3949AB;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #1A237E;
+      min-width: 160px;
+      border-radius: 5px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      padding: 12px 16px;
+      display: block;
+      color: white;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #3949AB;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .buttons a {
+      text-decoration: none;
+    }
+
+    .buttons button {
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      border: none;
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #000;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .buttons button:hover {
+      transform: scale(1.1);
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .buttons button:active {
+      transform: scale(1.05);
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .menu ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      .buttons {
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<h1>Albanez System</h1>
+
+<!-- Menu Dropdown -->
+<div class="menu">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Cadastros</a>
+      <div class="dropdown-content">
+        <a href="/cadastroFuncionario">Funcionário</a>
+        <a href="/cadastroProduto">Produto</a>
+        <a href="/cadastroFornecedor">Fornecedor</a>
+        <a href="/cadastroCliente">Cliente</a>
+        <a href="/cadastroPedido">Pedido</a>
+        <a href="/cadastroPedido">Desconto</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#">Relatórios</a>
+      <div class="dropdown-content">
+        <a href="/listaProduto">Produto</a>
+        <a href="/listaFuncionario">Funcionário</a>
+        <a href="/listaFornecedor">Fornecedor</a>
+        <a href="/listaCliente">Cliente</a>
+        <a href="/listaPedido">Pedidos</a>
+      </div>
+    </li>
+    <li><a href="/realizaVenda">Venda</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
+
+
